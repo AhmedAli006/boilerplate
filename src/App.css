@@ -1,0 +1,39 @@
+.App {
+  text-align: center;
+}
+.hbod{
+  margin:  0 auto;
+background-color: #98c1d9;
+width: 23rem;
+height: 30rem;
+border-radius: 1rem;
+}
+.hin{
+display: flex;
+ 
+  justify-content: center;
+  align-items: center;
+ width: 23rem;
+height: 30rem;
+}
+.btn{
+	box-shadow: 1px 2px 5px 0px #000000;
+	background-color:transparent;
+	border-radius:28px;
+	border:1px solid #000000;
+	display:flex;
+	cursor:pointer;
+	color:#000000;
+	font-family:Verdana;
+	font-size:17px;
+	padding:13px 27px;
+	text-decoration:none;
+	text-shadow:0px 0px 0px #000000;
+  margin: 10px;
+}
+	button:hover {
+	background-color:transparent;}
+ button:active {
+	position:relative;
+	top:1px;
+}
