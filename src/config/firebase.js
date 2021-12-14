@@ -1,25 +1,13 @@
-// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword,signOut } from "firebase/auth";
 
-        import { getDatabase, ref, set } from "firebase/database";
-// import {
-//   getDatabase,
-//   // onChildAdded,
-//   // child,
-//   // ref,
-//   // push,
-//   // update,
-//   // set,
-// } from "firebase/database";
-// import { useEffect } from "react";
+ import { getDatabase, ref, set } from "firebase/database";
+import { useNavigate } from "react-router";
 import { useDispatch } from "react-redux";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+
+ 
 const firebaseConfig = {
   apiKey: "AIzaSyCGUjzsb-64NC-AH2ptHmYDzSjoSydrrWs",
   authDomain: "boilerplate-c6b91.firebaseapp.com",
@@ -37,21 +25,27 @@ const analytics = getAnalytics(app);
 const auth = getAuth(app);
 
 
-const database = getDatabase(app);
 
-let userLogin = (obj ,navigate) => {
-    return(dispatch)=>{
+
+const database = getDatabase(app);
+let userLogin = (obj ) => {
+    return(dispatch,navigate)=>{
 
       signInWithEmailAndPassword(auth, obj.email, obj.password)
         .then((userCredential) => {
           // Signed in
           const user = userCredential.user;
         dispatch({
-          type: "login"
-          
+          type: "login",
+          ...user
         });
-          
+          navigate("/")
           // ...
+          
+
+
+
+    
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -60,6 +54,7 @@ let userLogin = (obj ,navigate) => {
         });
     
 }
+
 };
 
 
@@ -86,19 +81,7 @@ let SignUp = (obj, navigate) => {
          
           alert("user created Successfully");
         });
-        
-        
-
-// function writeUserData(obj.name, obj.email ,obj.password) {
-//   const db = getDatabase();
-//   set(ref(db, 'users/' + userId), {
-//     username: name,
-//     email: email,
-    
-//   });
-// }
-
-        // ...
+   
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -109,36 +92,31 @@ let SignUp = (obj, navigate) => {
   };
 };
 
-let Signout = ()=>{
-  
-  
-  const dispatch = useDispatch();
-signOut(auth).then(() => {
-  dispatch(
-    {
-      type : "signout"
-    }
-  )
-  console.log("succsess");
-}).catch((error) => {
-  alert("signout error");
-});
-}
 
-export { userLogin, SignUp,Signout, auth };
 
-// export {
- 
+// const dispatch=useDispatch()
+
+// let Signout = (navigate, dispatch)=>{
+// navigate("/")  
+//   dispatch(
+//     {
+//       type : "signout",
+//       isLogin : false
+//     }
+//   )
+// signOut(auth).then(() => {
   
-  
-//   database,
-//   onChildAdded,
-//   child,
-//   ref,
-//   push,
-//   update,
-//   set,
-// };
+//   console.log("succsess");
+// }).catch((error) => {
+//   alert("signout error");
+// });
+// }
+
+
+
+
+
+export { userLogin, SignUp, auth,signOut };
 
 
 

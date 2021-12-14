@@ -1,9 +1,10 @@
-const INITIAL_SATE = {
-   isLogin : false
+const INITIAL_STAE = {
+   isLogin : true
+   
 };
 
-const reducer = (state = INITIAL_SATE, { type, Payload }) => {
-  switch (type) {
+const reducer = (state = INITIAL_STAE, action) => {
+  switch (action.type) {
     case "login":
       return {  isLogin: true };
     case "signout":

@@ -1,8 +1,8 @@
-const INITIAL_SATE= {
+const INITIAL_STAE= {
     lable: 'sign up reducer'
 };
 
-const reducer = (state = INITIAL_SATE,{type , Payload} )=> {
+const reducer = (state = INITIAL_STAE,action )=> {
     return state
 }
 

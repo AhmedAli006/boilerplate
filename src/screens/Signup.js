@@ -1,6 +1,7 @@
 import {  useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router";
+import ButtonAppBar from "../components/Appbar";
 import Button from "../components/Button";
 import Input from "../components/Input";
 import { SignUp } from "../config/firebase";
@@ -31,6 +32,7 @@ function Signup() {
 
   return (
     <>
+    <ButtonAppBar/>
       <div className="head">
         <h1>Sign Up</h1>
       </div>

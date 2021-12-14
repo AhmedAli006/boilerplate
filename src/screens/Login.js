@@ -1,18 +1,21 @@
-import { useEffect,useState } from "react";
-import { useDispatch } from "react-redux";
+import { useEffect, useState } from "react";
+import { useDispatch} from "react-redux";
 import { useNavigate } from "react-router";
 import { onAuthStateChanged } from "@firebase/auth";
-import {auth} from '../config/firebase'
+import { auth } from "../config/firebase";
 import Button from "../components/Button";
 import Input from "../components/Input";
-import { userLogin } from "../config/firebase";
-
+import { userLogin }from "../config/firebase";
+import ButtonAppBar from "../components/Appbar";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
-const navigate = useNavigate();
+
+  // const state = useSelector((state) => state);
+  // console.log(state);
+  const navigate = useNavigate();
   let login = (e) => {
     e.preventDefault();
     let obj = {
@@ -21,16 +24,16 @@ const navigate = useNavigate();
     };
     dispatch(userLogin(obj));
   };
- useEffect(() => {
-      onAuthStateChanged(auth, (user) => {
-          if (user) {
-              navigate('/')
-          }
-      })
-
-  }, [])
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        navigate("/");
+      }
+    });
+  }, []);
   return (
     <>
+    <ButtonAppBar/>
       <div className="head">
         <h1>Login</h1>
       </div>
@@ -54,7 +57,6 @@ const navigate = useNavigate();
             <Button>Login</Button>
           </div>
         </form>
-        
       </div>
     </>
   );
